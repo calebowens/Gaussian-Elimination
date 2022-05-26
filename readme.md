@@ -2,6 +2,8 @@
 This simple library facilitates the solving of simultaneous equations and finding the
 inverse of matrices via Gaussian Elimination.
 
+Docs: [View Docs](https://calebowens.github.io/Gaussian-Elimination/)
+
 ## Usage
 
 ### Simultaneous Equations

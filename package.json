@@ -4,7 +4,7 @@
   "description": "A library implementing Gauissian Elmination in typescript",
   "main": "bin/main.js",
   "repository": "https://github.com/calebowens/Gaussian-Elimination",
-  "website": "https://calebowens.github.io/Gaussian-Elimination/",
+  "homepage": "https://calebowens.github.io/Gaussian-Elimination/",
   "author": "Caleb Owens <hello@calebowens.com>",
   "license": "Boost",
   "keywords": [
