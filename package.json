@@ -1,15 +1,17 @@
 {
   "name": "gaussian-elimination-co",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A library implementing Gauissian Elmination in typescript",
   "main": "bin/main.js",
-  "repository": "git@github.com:calebowens/Gaussian-Elimination.git",
+  "repository": "https://github.com/calebowens/Gaussian-Elimination",
+  "website": "https://calebowens.github.io/Gaussian-Elimination/",
   "author": "Caleb Owens <hello@calebowens.com>",
   "license": "Boost",
   "keywords": [
     "Matrix",
     "Inverse",
-    "Gaussian Elimination"
+    "Gaussian Elimination",
+    "Simultanious Equations"
   ],
   "dependencies": {},
   "scripts": {
