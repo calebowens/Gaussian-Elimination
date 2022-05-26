@@ -1,5 +1,5 @@
 {
-  "name": "gaussian-elimination",
+  "name": "gaussian-elimination-co",
   "version": "1.0.0",
   "description": "A library implementing Gauissian Elmination in typescript",
   "main": "bin/main.js",

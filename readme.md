@@ -6,7 +6,9 @@ inverse of matrices via Gaussian Elimination.
 
 ### Simultaneous Equations
 
-Create a Tableau to represent this set of equations ![equations](https://i.imgur.com/uS3ujTa.png[/img)
+Create a Tableau to represent this set of equations
+
+![equations](https://i.imgur.com/uS3ujTa.png[/img)
 
 ```ts
 import { Tableau } from './main'
