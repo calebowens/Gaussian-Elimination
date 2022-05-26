@@ -1,0 +1,24 @@
+{
+  "name": "gaussian-elimination",
+  "version": "1.0.0",
+  "description": "A library implementing Gauissian Elmination in typescript",
+  "main": "bin/main.js",
+  "repository": "git@github.com:calebowens/Gaussian-Elimination.git",
+  "author": "Caleb Owens <hello@calebowens.com>",
+  "license": "Boost",
+  "keywords": [
+    "Matrix",
+    "Inverse",
+    "Gaussian Elimination"
+  ],
+  "dependencies": {},
+  "scripts": {
+    "build": "tsc",
+    "gen_docs": "typedoc src/main.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.8.0",
+    "typedoc": "^0.22.15",
+    "typescript": "^4.7.2"
+  }
+}
