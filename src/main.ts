@@ -68,40 +68,20 @@ export class Tableau<LHSWidth extends number, RHSWidth extends number> {
     )
   }
 
+
   /**
-   * Solves the set of equations. Returns the output
+   * Solves the set of equations
    */
   solve(): Tuple<Tuple<number, RHSWidth>, LHSWidth> {
-    for (let i = 0; i < this.height; ++i) {
-      this.rows[i].divideBy(this.rows[i].lhs.values[i])
+    this.gauss()
 
-      for (let j = this.height - 1; j > i; --j) {
-        this.rows[j].subtractMultiple(
-          this.rows[i],
-          this.rows[j].lhs.values[i]
-        )
-      }
-    }
+    this.checkValidity()
 
-    for (let i = 0; i < this.height; ++i) {
-      if (this.rows[i].lhs.values[i] === 0) {
-        throw "LHS is singular and unsolvable"
-      }
-    }
+    this.jordan()
 
-    for (let i = this.height - 1; i >= 0; --i) {
-      for (let j = 0; j < i; ++j) {
-        this.rows[j].subtractMultiple(
-          this.rows[i],
-          this.rows[j].lhs.values[i]
-        )
-      }
-    }
-
-    return this.rows.map(
-      (row) => row.rhs.values
-    ) as Tuple<Tuple<number, RHSWidth>, LHSWidth>
+    return this.getLHS()
   }
+
 
   /**
    * Gets the left-hand side of the tableau
@@ -126,6 +106,50 @@ export class Tableau<LHSWidth extends number, RHSWidth extends number> {
     console.log(this.rows.map((row) => [row.lhs.values, row.rhs.values]))
   }
 
+  private gauss() {
+    for (let i = 0; i < this.height; ++i) {
+      this.rows[i].divideBy(this.lhsGet(i, i))
+
+      for (let j = this.height - 1; j > i; --j) {
+        this.rows[j].subtractMultiple(
+          this.rows[i],
+          this.lhsGet(j, i)
+        )
+
+        if (this.lhsGet(j, j) === 0) {
+          this.orderRows()
+        }
+      }
+    }
+  }
+
+  private checkValidity() {
+    for (let i = 0; i < this.height; ++i) {
+      if (this.lhsGet(i, i) === 0) {
+        throw "LHS is singular and unsolvable"
+      }
+    }
+  }
+
+  private jordan() {
+    for (let i = this.height - 1; i >= 0; --i) {
+      for (let j = 0; j < i; ++j) {
+        this.rows[j].subtractMultiple(
+          this.rows[i],
+          this.lhsGet(j, i)
+        )
+      }
+    }
+  }
+
+  private lhsGet(x: number, y: number) {
+    return this.rows[x].lhs.values[y]
+  }
+
+  private lhsSet(x: number, y: number, value: number) {
+    this.rows[x].lhs.values[y] = value
+  }
+
   /**
    * The LHS matrix needs to have the y=-x entries be non-zero
    * @private
@@ -139,8 +163,6 @@ export class Tableau<LHSWidth extends number, RHSWidth extends number> {
           validPermutation = false
         }
       }
-
-
 
       if (validPermutation) {
         this.rows = permutation as Tuple<Row<LHSWidth, RHSWidth>, LHSWidth>
