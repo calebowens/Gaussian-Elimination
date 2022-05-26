@@ -1,6 +1,6 @@
 {
   "name": "gaussian-elimination-co",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A library implementing Gauissian Elmination in typescript",
   "main": "bin/main.js",
   "repository": "https://github.com/calebowens/Gaussian-Elimination",
